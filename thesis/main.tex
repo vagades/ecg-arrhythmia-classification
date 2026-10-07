@@ -1,0 +1,129 @@
+\documentclass[oneside,senior,etd]{BYUPhysForDegree}
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst} % Красная строка у первого абзаца после заголовка
+\usepackage{rotating}
+
+\usepackage[russian]{babel}
+\usepackage{amsfonts} % Пакеты для математических символов и теорем
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Пакеты для вставки графики
+\usepackage{subfig}
+\usepackage{color}
+\usepackage[unicode]{hyperref}
+\usepackage[nottoc]{tocbibind} % Для того, чтобы список литературы отображался в оглавлении
+\usepackage{algorithmic} % Для записи алгоритмов в псевдокоде
+\usepackage{algorithm}
+\usepackage{verbatim} % Для вставок заранее подготовленного текста в режиме as-is
+\usepackage{listings}
+
+\usepackage{commath}
+\newcommand\Tau{\mathcal{T}}
+\newcommand{\R}{\mathbb{R}}
+\usepackage{color}
+\usepackage[colorinlistoftodos, prependcaption]{todonotes}
+\usepackage{multirow}
+\newcommand*{\MyIndent}{\hspace*{0.2cm}}%
+
+\Chair{Кафедра математической статистики}
+\Lab{~}
+\Year{2026}
+  \Month{Май}
+  \City{Москва}
+  \AuthorText{Автор}
+  \Author{Вагапова Деши Насрудиновна}
+  \AuthorEng{}
+  \AcadGroup{416}
+  \TitleTop{Методы обработки и классификации нестационарных}
+  \TitleBottom{биосигналов с использованием машинного обучения}
+  \TitleTopEng{Methods for Processing and Classification}
+  \TitleBottomEng{of Non-Stationary Biosignals Using Machine Learning}
+  \docname{Курсовая работа}
+  %\docname{Выпускная квалификационная работа}
+  %\docname{Магистерская диссертация}
+  \Advisor{Захарова Татьяна Валерьевна}
+  \AdvisorDegree{к.ф.-м.н.}
+  % \Consultant{}
+  % \ConsultantDegree{}
+
+\Abstract{%
+В работе исследуются методы автоматической классификации нестационарных
+биосигналов~--- электрокардиограмм~(ЭКГ)~--- с~использованием алгоритмов
+машинного обучения.
+На~основе базы~данных MIT-BIH Arrhythmia Database, содержащей более
+100~000 размеченных сердечных биений пяти классов аритмий
+(норма,~предсердная экстрасистола,~желудочковая экстрасистола,
+блокада левой и~правой ножек пучка Гиса),
+реализованы и~сравниваются три модели:
+случайный лес~(Random Forest), одномерная сверточная нейронная сеть~(1D~CNN)
+и~остаточная нейронная сеть~(ResNet1D).
+Для~борьбы с~дисбалансом классов применяется взвешенная функция потерь.
+Проведена оценка устойчивости моделей к~четырем типам реалистичных помех:
+гауссовому шуму, дрейфу изолинии, сетевой помехе~50~Гц и~мышечному шуму.
+Достоверность результатов подтверждена пятикратной стратифицированной
+кросс-валидацией.
+Показано, что~1D~CNN превосходит конкурентов по~качеству классификации
+на~чистых данных~(Macro~F1~$=$~0.974) и~устойчива к~медленным трендам
+и~мышечному шуму, тогда~как случайный лес обеспечивает наилучшую
+воспроизводимость результатов и~стойкость к~случайным аддитивным помехам.
+}
+
+\AbstractEng{%
+This work investigates methods for automatic classification of non-stationary
+biosignals~--- electrocardiograms~(ECG)~--- using machine learning algorithms.
+Based on~the MIT-BIH Arrhythmia Database containing over 100,000 annotated
+heartbeats across five arrhythmia classes
+(normal, atrial premature contraction, ventricular premature contraction,
+left and right bundle branch block),
+three models are implemented and compared:
+Random~Forest, one-dimensional Convolutional Neural Network~(1D~CNN),
+and Residual Neural Network~(ResNet1D).
+A~weighted loss function is applied to~address class imbalance.
+The robustness of the models is~evaluated against four types of realistic noise:
+Gaussian noise, baseline wander, 50~Hz powerline interference,
+and~muscle~(EMG) noise.
+Five-fold stratified cross-validation is~performed to~confirm reliability.
+It~is~shown that 1D~CNN achieves the best classification quality on clean data
+(Macro~F1~$=$~0.974) and is robust to baseline wander and muscle noise,
+while Random~Forest provides the best reproducibility
+and resistance to random additive noise.
+}
+
+
+%%%% DON'T change this. It is here because .sty does not support cyrillic cp properly %%%%
+\University{Московский государственный университет имени М.В.Ломоносова}
+\Faculty{Факультет вычислительной математики и кибернетики}
+\GrText{гр.}
+\AdvisorText{Научный руководитель}
+\ConsultantText{Научный консультант}
+\AbstractText{Аннотация}
+
+\begin{document}
+\setlength{\parindent}{1.25cm}
+\fixmargins
+\makepreliminarypages
+
+\oneandhalfspace
+
+\tableofcontents
+
+\include{Abbreviations}
+
+\include{Chapter0} % Введение
+\include{Chapter1} % Постановка задачи и описание данных
+\include{Chapter2} % Методы классификации биосигналов
+\include{Chapter3} % Результаты на чистых данных
+\include{Chapter4} % Устойчивость к шуму и кросс-валидация
+\include{Chapter5} % Заключение
+
+\nocite{*}
+\bibliographystyle{gost71u} % Для соответствия требованиям об оформлении списка литературы
+\bibliography{references}
+
+% \include{Appendix} 
+
+\end{document}

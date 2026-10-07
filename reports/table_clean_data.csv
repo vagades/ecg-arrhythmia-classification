@@ -1,0 +1,4 @@
+Модель,Accuracy,Macro F1,Weighted F1
+CNN,0.9917,0.9736,0.9918
+ResNet1D,0.9847,0.9532,0.9848
+RandomForest,0.9848,0.9496,0.9841
